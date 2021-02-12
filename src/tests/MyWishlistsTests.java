@@ -53,7 +53,7 @@ public class MyWishlistsTests extends BaseTest {
 		int numberOfWishlistsBefore = myWishlistPage.getNumberOfWishlists();
 		myWishlistPage.clickDeletebutton(wishlistName);
 		acceptAlert();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		int numberOfWishlistsAfter = myWishlistPage.getNumberOfWishlists();
 		Assert.assertTrue(numberOfWishlistsBefore > numberOfWishlistsAfter);
 	}

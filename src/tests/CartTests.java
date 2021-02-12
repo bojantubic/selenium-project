@@ -10,11 +10,12 @@ public class CartTests extends BaseTest {
 		successfulLogin();
 		dressesPage.getToThePage()
 					.clickAddToCartButton(3);
-		Thread.sleep(2000);
 		Assert.assertTrue(dressesPage.proceedButtonDisplayed());
+		dressesPage.ClickProceedButton()
+					.deleteItemFromCart();
 	}
 	
-//	@Test
+	@Test
 	public void addThreeItemsToCart() throws InterruptedException {
 		successfulLogin();
 		dressesPage.getToThePage()
@@ -24,7 +25,10 @@ public class CartTests extends BaseTest {
 					.clickContinueShoppingButton()
 					.clickAddToCartButton(3)
 					.clickContinueShoppingButton();
-		Thread.sleep(2000);
 		Assert.assertTrue(dressesPage.proceedButtonDisplayed());
+		dressesPage.ClickProceedButton()
+					.deleteItemFromCart()
+					.deleteItemFromCart()
+					.deleteItemFromCart();
 	}
 }

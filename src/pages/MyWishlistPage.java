@@ -5,9 +5,12 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MyWishlistPage {
 	private WebDriver driver;
+	private WebDriverWait wait;
 	
 	private By nameInput = By.id("name");
 	private By submitWishlistButton = By.id("submitWishlist");
@@ -15,6 +18,7 @@ public class MyWishlistPage {
 	
 	public MyWishlistPage(WebDriver driver) {
 		this.driver = driver;
+		wait = new WebDriverWait(driver, 5);
 	}
 	
 	public MyWishlistPage insertWishlistName(String name) {
@@ -33,7 +37,9 @@ public class MyWishlistPage {
 	}
 	
 	public String assertWishlistName(String wishlistName) {
-		return driver.findElement(By.xpath("//a[contains(text(), '" + wishlistName + "')]")).getText();
+		By wish = By.xpath("//a[contains(text(), '" + wishlistName + "')]");
+		WebElement wishList = wait.until(ExpectedConditions.presenceOfElementLocated(wish));
+		return wishList.getText();
 	}
 	
 	public int getNumberOfWishlists() {
